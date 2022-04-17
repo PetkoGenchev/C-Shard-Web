@@ -9,14 +9,15 @@ namespace Web_HTTP_Protocol.Controllers
     {
         public IActionResult List()
         {
+            var requestCookies = this.Request.Cookies;
+
+            if (!requestCookies.ContainsKey("Authentication"))
+            {
+                return Unauthorized();
+            }
 
             return View();
 
-            //this.Response.Headers.Add("Content-Disposition", "attachment");
-            //return File("/path/to/pdf", "application/pdf");
-
-
-            //return Redirect("/cats/search");
         }
 
         public IActionResult Details()
