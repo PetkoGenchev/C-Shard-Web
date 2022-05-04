@@ -42,6 +42,7 @@ namespace MyWebServer.Server
 
                 Console.WriteLine(requestText);
 
+                
                 var request = HttpRequest.Parse(requestText);
 
                 await WriteResponse(networkStream);

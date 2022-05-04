@@ -65,12 +65,17 @@ namespace MyWebServer.Server.Http
 
             foreach (var headerLine in headerLines)
             {
-                if (headerLine == NewLine)
+                if (headerLine == string.Empty)
                 {
                     break;
                 }
 
-                var headerParts = headerLine.Split(":");
+                var headerParts = headerLine.Split(":",2);
+
+                if (headerParts.Length != 2)
+                {
+                    throw new InvalidOperationException("Request is not valid.");
+                }
 
                 var header = new HttpHeader
                 {
