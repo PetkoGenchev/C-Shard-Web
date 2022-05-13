@@ -1,4 +1,5 @@
 ﻿using MyWebServer.Server.Http;
+using MyWebServer.Server.Routing;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,7 @@ namespace MyWebServer.Server
         private readonly int port;
         private readonly TcpListener listener;
 
-        public HttpServer(string ipAddress,int port)
+        public HttpServer(string ipAddress,int port,Action<IRoutingTable> routingTable)
         {
             this.ipAddress = IPAddress.Parse(ipAddress);
 
@@ -23,6 +24,18 @@ namespace MyWebServer.Server
 
             listener = new TcpListener(this.ipAddress, this.port);
         }
+
+        public HttpServer(int port, Action<IRoutingTable> routingTable) 
+            : this("127.0.0.1", port,routingTable)
+        {
+
+        }
+
+        public HttpServer(Action<IRoutingTable> routingTable)
+            : this(5000,routingTable)
+        {
+        }
+
 
         public async Task Start()
         {
@@ -62,8 +75,9 @@ namespace MyWebServer.Server
 HTTP/1.1 200 OK
 Server: My Web Server
 Date: {DateTime.UtcNow:r}
-Content-Length: {contentLength}
 Content-Type: text/html; charset=UTF-8
+Content-Length: {contentLength}
+
 
 {content}";
 
@@ -81,11 +95,22 @@ Content-Type: text/html; charset=UTF-8
             var bufferLength = 1024;
             var buffer = new byte[bufferLength];
 
+            var totalBytes = 0;
+
             var requestBuilder = new StringBuilder();
 
             while (networkStream.DataAvailable)
             {
                 var bytesRead = await networkStream.ReadAsync(buffer, 0, bufferLength);
+
+                totalBytes += bytesRead;
+
+                if (totalBytes > 10 * 1024)
+                {
+                    throw new InvalidOperationException("Request is too large.");
+                }
+
+
                 requestBuilder.Append(Encoding.UTF8.GetString(buffer, 0, bytesRead));
             }
             return requestBuilder.ToString();
