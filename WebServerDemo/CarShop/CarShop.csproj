@@ -6,9 +6,6 @@
   </PropertyGroup>
 
 	<ItemGroup>
-		<Content Include="Views\**\*.*">
-			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
-		</Content>
 
 		<Content Include="wwwroot\**\*.*">
 			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -22,11 +19,6 @@
 	    <PrivateAssets>all</PrivateAssets>
 	    <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 	  </PackageReference>
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="Controllers\" />
-	  <Folder Include="Views\" />
 	</ItemGroup>
 
 	<ItemGroup>
