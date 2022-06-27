@@ -5,6 +5,7 @@
 
     using static DataConstants;
 
+
     public class Issue
     {
         [Key]

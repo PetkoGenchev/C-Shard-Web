@@ -5,6 +5,7 @@
 
     using static DataConstants;
 
+
     public class User
     {
         [Key]
@@ -20,7 +21,6 @@
         public string Email { get; set; }
 
         [Required]
-        [MaxLength(DefaultMaxLength)]
         public string Password { get; set; }
 
         public bool IsMechanic { get; set; }
