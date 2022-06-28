@@ -63,7 +63,7 @@
             }
 
 
-            if (Uri.IsWellFormedUriString(model.Image,UriKind.Absolute))
+            if (!Uri.IsWellFormedUriString(model.Image,UriKind.Absolute))
             {
                 errors.Add($"Image {model.Image} is not a valid URL!");
             }
