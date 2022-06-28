@@ -25,7 +25,6 @@
 
         [Required]
         [MaxLength(8)]
-     //   [RegularExpression("[A-Z]{2}[0-9]{4}[A-Z]{2}")]
         public string PlateNumber { get; set; }
 
         [Required]
