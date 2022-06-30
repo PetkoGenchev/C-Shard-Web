@@ -13,19 +13,20 @@
     {
         private readonly IValidator validator;
         private readonly CarShopDbContext data;
+        private readonly IUserService userService;
 
-
-        public CarsController(IValidator validator, CarShopDbContext data)
+        public CarsController(IValidator validator, CarShopDbContext data, IUserService userService)
         {
             this.validator = validator;
             this.data = data;
+            this.userService = userService;
         }
 
         [Authorize]
         public HttpResponse Add()
         {
 
-            if (this.UserIsMechanic())
+            if (this.userService.IsMechanic(this.User.Id))
             {
                 return Unauthorized();
             }
@@ -65,56 +66,33 @@
         [Authorize]
         public HttpResponse All()
         {
-            List<CarListingViewModel> cars;
+            var carsQuery = this.data.Cars.AsQueryable();
 
 
-            if (this.UserIsMechanic())
+            if (this.userService.IsMechanic(this.User.Id))
             {
-                cars = this.data.Cars
-                    .Where(x => x.Issues.Any(i => !i.IsFixed))
-                    .Select(c => new CarListingViewModel
-                    {
-                        Id = c.Id,
-                        Model = c.Model,
-                        Year = c.Year,
-                        PlateNumber = c.PlateNumber,
-                        Image = c.PictureUrl,
-                        FixedIssues = c.Issues.Where(f => f.IsFixed).Count(),
-                        RemainingIssues = c.Issues.Where(r => !r.IsFixed).Count()
-
-                    })
-                .ToList();
+                carsQuery = carsQuery.Where(x => x.Issues.Any(i => !i.IsFixed));
             }
             else
             {
-
-
-                cars = this.data.Cars
-                    .Where(c => c.OwnerId == this.User.Id)
-                    .Select(c => new CarListingViewModel
-                    {
-                        Id = c.Id,
-                        Model = c.Model,
-                        Year = c.Year,
-                        PlateNumber = c.PlateNumber,
-                        Image = c.PictureUrl,
-                        FixedIssues = c.Issues.Where(f => f.IsFixed).Count(),
-                        RemainingIssues = c.Issues.Where(r => !r.IsFixed).Count()
-
-                    })
-                    .ToList();
-
+                carsQuery = carsQuery.Where(c => c.OwnerId == this.User.Id);
             }
+
+            var cars = carsQuery
+                .Select(c => new CarListingViewModel
+                {
+                Id = c.Id,
+                Model = c.Model,
+                Year = c.Year,
+                PlateNumber = c.PlateNumber,
+                Image = c.PictureUrl,
+                FixedIssues = c.Issues.Where(f => f.IsFixed).Count(),
+                RemainingIssues = c.Issues.Where(r => !r.IsFixed).Count()
+                })
+                .ToList();
 
             return View(cars);
         }
-
-
-        private bool UserIsMechanic()
-        => this.data.Users.Any(u => u.Id == this.User.Id && u.IsMechanic);
-
-
-
 
     }
 }

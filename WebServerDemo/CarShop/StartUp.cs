@@ -20,6 +20,7 @@
                 .Add<IViewEngine, CompilationViewEngine>()
                 .Add<IValidator,Validator>()
                 .Add<IPasswordHasher,PasswordHasher>()
+                .Add<IUserService, UserService>()
                 .Add<CarShopDbContext>())
             .WithConfiguration<CarShopDbContext>(c => c.Database.Migrate())
             .Start();
