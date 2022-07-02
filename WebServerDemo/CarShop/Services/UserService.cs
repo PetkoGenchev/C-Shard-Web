@@ -14,5 +14,11 @@
 
         public bool IsMechanic(string userId)
         => this.data.Users.Any(u => u.Id == userId && u.IsMechanic);
+
+
+        public bool OwnsCar(string userId, string carId)
+            => this.data
+                    .Cars
+                    .Any(u => u.Id == carId && u.OwnerId == userId);
     }
 }

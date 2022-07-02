@@ -1,6 +1,7 @@
 ﻿namespace CarShop.Services
 {
     using CarShop.Models.Cars;
+    using CarShop.Models.Issues;
     using CarShop.Models.Users;
     using System;
     using System.Collections.Generic;
@@ -14,7 +15,7 @@
             var errors = new List<string>();
 
             if(model.Username.Length < UserMinUserName ||
-                model.Username.Length > DefaultMaxLength)
+               model.Username.Length > DefaultMaxLength)
             {
                 errors.Add($"Username '{model.Username}' is not valid. It must be over {UserMinUserName} and below {DefaultMaxLength} symbols.");
             }
@@ -27,7 +28,7 @@
 
 
             if (model.Password.Length < UserMinPassword ||
-    model.Password.Length > DefaultMaxLength)
+                model.Password.Length > DefaultMaxLength)
             {
                 errors.Add($"Password '{model.Username}' is not valid. It must be over {UserMinPassword} and below {DefaultMaxLength} symbols.");
             }
@@ -77,6 +78,25 @@
 
             return errors;
 
+        }
+
+        public ICollection<string> ValidateIssue(AddIssueFormModel issue)
+        {
+            var errors = new List<string>();
+
+
+            if (issue.CarId == null)
+            {
+                errors.Add($"Car ID cannot be empty.");
+            }
+
+
+            if (issue.Description.Length < IssueDescriptionMinLength)
+            {
+                errors.Add($"Issue Description '{issue.Description}' is not valid. It must be over {IssueDescriptionMinLength} symbols.");
+            }
+
+            return errors;
         }
     }
 }

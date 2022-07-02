@@ -17,5 +17,7 @@
         public const int CarYearMinValue = 1900;
         public const int CarYearMaxValue = 2100;
 
+        public const int IssueDescriptionMinLength = 5;
+
     }
 }

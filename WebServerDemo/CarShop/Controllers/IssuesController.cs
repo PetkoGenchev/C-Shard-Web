@@ -1,6 +1,7 @@
 ﻿namespace CarShop.Controllers
 {
     using CarShop.Data;
+    using CarShop.Data.Models;
     using CarShop.Models.Issues;
     using CarShop.Services;
     using MyWebServer.Controllers;
@@ -11,11 +12,13 @@
     {
         private readonly CarShopDbContext data;
         private readonly IUserService userService;
+        private readonly IValidator validator;
 
-        public IssuesController(CarShopDbContext data, IUserService userService)
+        public IssuesController(IValidator validator, CarShopDbContext data, IUserService userService)
         {
             this.data = data;
             this.userService = userService;
+            this.validator = validator;
         }
 
         [Authorize]
@@ -55,6 +58,114 @@
 
             return View(carWithIssues);
 
+        }
+
+        [Authorize]
+        public HttpResponse Add(string carId) => View(new AddIssueViewModel { CarId = carId });
+
+
+        [HttpPost]
+        [Authorize]
+        public HttpResponse Add(AddIssueFormModel model)
+        {
+
+            if (!this.UserCanAccessCar(model.CarId))
+            {
+                return Unauthorized();
+            }
+
+
+            var modelErrors = this.validator.ValidateIssue(model);
+
+
+            if (modelErrors.Any())
+            {
+                return Error(modelErrors);
+            }
+
+
+            var issue = new Issue
+            {
+                Description = model.Description,
+                CarId = model.CarId
+            };
+
+            this.data.Issues.Add(issue);
+            this.data.SaveChanges();
+
+            return Redirect($"/Issues/CarIssues?carId={model.CarId}");
+
+        }
+
+        [Authorize]
+        public HttpResponse Fix(string issueId, string carId)
+        {
+            if (!this.userService.IsMechanic(this.User.Id))
+            {
+                return Unauthorized();
+            }
+
+            var issue = this.data
+                .Issues
+                .Where(x => x.CarId == carId && x.Id == issueId)
+                .FirstOrDefault();
+
+            if (issue == null)
+            {
+                return Error($"Car with with ID {carId} and Issue with ID {issueId} does not exist!");
+            }
+
+            issue.IsFixed = true;
+
+            this.data.SaveChanges();
+
+            return Redirect($"/Issues/CarIssues?carId={carId}");
+        }
+
+
+        [Authorize]
+        public HttpResponse Delete(string issueId, string carId)
+        {
+            if (!this.UserCanAccessCar(carId))
+            {
+                return Unauthorized();
+            }
+
+
+            var issue = this.data
+                .Issues
+                .Where(x => x.CarId == carId && x.Id == issueId)
+                .FirstOrDefault();
+
+            if (issue == null)
+            {
+                return Error($"Car with with ID {carId} and Issue with ID{issueId} does not exist!");
+            }
+
+            this.data.Remove(issue);
+
+            this.data.SaveChanges();
+
+            return Redirect($"/Issues/CarIssues?carId={carId}");
+        }
+
+
+        private bool UserCanAccessCar(string carId)
+        {
+            var userIsMechanic = this.userService.IsMechanic(this.User.Id);
+
+            if (!userIsMechanic)
+            {
+                var userOwnsCar = this.userService.OwnsCar(this.User.Id, carId);
+
+                if (!userOwnsCar)
+                {
+                    return false;
+                }
+
+            }
+
+            return true;
         }
     }
 }
