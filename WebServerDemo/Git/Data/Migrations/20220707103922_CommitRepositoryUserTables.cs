@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace Git.Data.Migrations
 {
-    public partial class UserRepositoryCommitTables : Migration
+    public partial class CommitRepositoryUserTables : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
