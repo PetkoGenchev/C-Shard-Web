@@ -60,5 +60,37 @@
         }
 
 
+        public HttpResponse Login() => View();
+
+
+        [HttpPost]
+        public HttpResponse Login(RegisterUserFormModel model)
+        {
+            var hashedPassword = this.passwordHasher.HashPassword(model.Password);
+
+            var returnUser = this.data
+                .Users
+                .Where(u => u.Username == model.UserName && u.Password == hashedPassword)
+                .Select(i => i.Id)
+                .FirstOrDefault();
+
+            if (returnUser != null)
+            {
+                return Error($"Username and password combination is not valid!");
+            }
+
+            this.SignIn(returnUser);
+
+            return Redirect("/Repositories/All");
+
+        }
+
+
+        public HttpResponse Logout()
+        {
+            this.SignOut();
+
+            return Redirect("/");
+        }
     }
 }

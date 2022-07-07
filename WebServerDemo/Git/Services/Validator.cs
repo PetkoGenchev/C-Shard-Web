@@ -2,7 +2,7 @@
 {
     using Git.Models.Users;
     using System.Collections.Generic;
-
+    using System.Text.RegularExpressions;
     using static Data.DataConstants;
     public class Validator : IValidator
     {
@@ -16,7 +16,22 @@
             }
 
 
+            if (!Regex.IsMatch(model.Email, UserEmailRegex))
+            {
+                errors.Add($"Email is not in the correct format!");
+            }
 
+
+            if (model.Password.Length < 6 || model.Password.Length > UserNPassMaxLength)
+            {
+                errors.Add($"Password must be between 6 and {UserNPassMaxLength} symbols.");
+            }
+
+
+            if (model.Password != model.ConfirmPassword)
+            {
+                errors.Add($"Password and Confirm Password do no match.");
+            }
 
 
             return errors;

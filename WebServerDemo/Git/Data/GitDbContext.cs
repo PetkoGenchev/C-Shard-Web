@@ -16,6 +16,5 @@
                 optionsBuilder.UseSqlServer("Server = .\\SQLEXPRESS;Database = GitSoftuni;Integrated Security = true");
             }
         }
-
     }
 }
