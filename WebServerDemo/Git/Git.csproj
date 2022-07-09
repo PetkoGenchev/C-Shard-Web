@@ -40,7 +40,6 @@
 
   <ItemGroup>
     <Folder Include="Models\Commits\" />
-    <Folder Include="Models\Repositories\" />
   </ItemGroup>
 
 </Project>

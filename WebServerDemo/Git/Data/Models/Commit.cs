@@ -13,7 +13,7 @@
         public string Description { get; set; }
 
         [Required]
-        public DateTime CreatedOn { get; set; }
+        public DateTime CreatedOn { get; set; } = DateTime.UtcNow;
 
 
         [Required]

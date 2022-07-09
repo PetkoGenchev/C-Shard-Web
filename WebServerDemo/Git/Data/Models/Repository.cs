@@ -15,8 +15,7 @@
         [MaxLength(10)]
         public string Name { get; set; }
 
-        [Required]
-        public DateTime CreatedOn { get; set; }
+        public DateTime CreatedOn { get; init; } = DateTime.UtcNow;
 
         [Required]
         public bool IsPublic { get; set; }

@@ -8,13 +8,16 @@
     using MyWebServer.Http;
     using System.Linq;
 
-    public class UserController : Controller
+    public class UsersController : Controller
     {
         private readonly IValidator validator;
         private readonly GitDbContext data;
         private readonly IPasswordHasher passwordHasher;
 
-        public UserController(GitDbContext data, IValidator validator, IPasswordHasher passwordHasher)
+        public UsersController(
+            GitDbContext data, 
+            IValidator validator, 
+            IPasswordHasher passwordHasher)
         {
             this.data = data;
             this.validator = validator;
@@ -52,8 +55,8 @@
                 Password = this.passwordHasher.HashPassword(model.Password)
             };
 
-            this.data.Users.Add(registeredUser);
-            this.data.SaveChanges();
+            data.Users.Add(registeredUser);
+            data.SaveChanges();
 
             return Redirect("/Users/Login");
 
@@ -64,7 +67,7 @@
 
 
         [HttpPost]
-        public HttpResponse Login(RegisterUserFormModel model)
+        public HttpResponse Login(LoginUserFormModel model)
         {
             var hashedPassword = this.passwordHasher.HashPassword(model.Password);
 
@@ -74,7 +77,7 @@
                 .Select(i => i.Id)
                 .FirstOrDefault();
 
-            if (returnUser != null)
+            if (returnUser == null)
             {
                 return Error($"Username and password combination is not valid!");
             }

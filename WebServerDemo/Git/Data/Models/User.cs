@@ -20,7 +20,6 @@
         public string Email { get; set; }
 
         [Required]
-        [MaxLength(UserNPassMaxLength)]
         public string Password { get; set; }
 
         public IEnumerable<Repository> Repositories { get; init; } = new List<Repository>();
