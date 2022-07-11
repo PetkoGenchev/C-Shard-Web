@@ -30,7 +30,7 @@
         [Authorize]
         public HttpResponse Create(CreateRepositoryFormModel model)
         {
-            var modelError = this.validator.ValidateRepositoryType(model);
+            var modelError = this.validator.ValidateRepository(model);
 
             if (modelError.Any())
             {
@@ -66,11 +66,21 @@
 
         public HttpResponse All()
         {
-            var repositoriesQuery = this.data.Repositories.AsQueryable().Where(r => r.IsPublic);
+            var repositoriesQuery = this.data.Repositories.AsQueryable();
+
+            if (!this.User.IsAuthenticated)
+            {
+                repositoriesQuery = repositoriesQuery.Where(r => r.IsPublic);
+            }
+            else
+            {
+                repositoriesQuery = repositoriesQuery.Where(r => r.IsPublic || r.OwnerId == this.User.Id);
+            }
 
             var repositories = repositoriesQuery
                 .Select(c => new RepositoriesListingViewModel
                 {
+                    Id = c.Id,
                     Name=c.Name,
                     Owner = c.Owner.Username,
                     CreatedOn = c.CreatedOn,
@@ -80,7 +90,5 @@
 
             return View(repositories);
         }
-
-
     }
 }

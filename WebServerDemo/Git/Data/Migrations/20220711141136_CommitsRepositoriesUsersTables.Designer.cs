@@ -10,7 +10,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Git.Data.Migrations
 {
     [DbContext(typeof(GitDbContext))]
-    [Migration("20220709113918_CommitsRepositoriesUsersTables")]
+    [Migration("20220711141136_CommitsRepositoriesUsersTables")]
     partial class CommitsRepositoriesUsersTables
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

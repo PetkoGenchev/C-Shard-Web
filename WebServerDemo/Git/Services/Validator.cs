@@ -1,5 +1,6 @@
 ﻿namespace Git.Services
 {
+    using Git.Models.Commits;
     using Git.Models.Repositories;
     using Git.Models.Users;
     using System.Collections.Generic;
@@ -51,6 +52,11 @@
             var errors = new List<string>();
 
 
+            if (model.name.Length < 3 || model.name.Length > 10)
+            {
+                errors.Add($"Name must be between 3 and 10 symbols.");
+            }
+
 
 
             if (model.repositoryType != "Public" && model.repositoryType != "Private")
@@ -61,5 +67,6 @@
             return errors;
 
         }
+
     }
 }
