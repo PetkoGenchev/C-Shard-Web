@@ -75,5 +75,48 @@
 
             return Redirect("/Repositories/All");
         }
+
+
+        [Authorize]
+        public HttpResponse All()
+        {
+            var commitsQuery = this.data.Commits.AsQueryable();
+
+            var commits = commitsQuery
+                .Where(x => x.CreatorId == this.User.Id)
+                .Select(c => new CommitsListingViewModel
+                {
+                    Id=c.Id,
+                    RepositoryName = c.Repository.Name,
+                    CreatedOn = c.CreatedOn,
+                    Description = c.Description
+                })
+                .ToList();
+
+            return View(commits);
+        }
+
+
+
+        [Authorize]
+        public HttpResponse Delete(string id)
+        {
+            var commitToRemove = this.data
+                .Commits
+                .Find(id);
+
+            if (commitToRemove == null || commitToRemove.CreatorId != this.User.Id)
+            {
+                return BadRequest();
+            }
+
+            this.data.Commits.Remove(commitToRemove);
+
+            this.data.SaveChanges();
+
+            return Redirect("/Commits/All");
+        }
+
+
     }
 }
