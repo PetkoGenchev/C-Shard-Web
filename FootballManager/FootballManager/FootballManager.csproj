@@ -28,10 +28,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Models\" />
-    <Folder Include="Services\" />
-    <Folder Include="ViewModels\Players\" />
-    <Folder Include="ViewModels\Users\" />
+    <None Remove="Views\Error.cshtml" />
   </ItemGroup>
 
 </Project>
