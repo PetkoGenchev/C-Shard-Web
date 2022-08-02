@@ -1,0 +1,48 @@
+﻿@using WebAppMVC.Services
+
+@model List<CatViewModel>
+
+@inject ICustomViewData customViewData
+
+@{
+    ViewData["Name"] = "Ivaylo";
+    ViewData["Title"] = "My Cats";
+
+    ViewData["Html"] = "<h1 style='color: red;'> Real HTML</h1>";
+}
+
+
+<h1>
+    All Cats - @(Model.Count * 10)
+
+    @(Model.Any() ? Model.Count : "No cats")
+</h1>
+
+
+
+
+@customViewData.GetViewData()
+
+
+
+@if (!Model.Any())
+{
+    <h2>No Cats!</h2>
+}
+
+
+
+<h2> Current year - @DateTime.UtcNow.Year</h2>
+
+@Html.Raw(@ViewData["Html"])
+
+<ul>
+    @foreach(var cat in Model)
+    {
+        <li>
+            @cat.Name  - @cat.Age
+        </li>
+    }
+</ul>
+
+@ViewData["Name"]
