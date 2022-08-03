@@ -1,4 +1,9 @@
 ﻿@using WebAppMVC.Services
+@using WebAppMVC.Components
+@*@{
+    Layout = "_Advanced";
+}*@
+
 
 @model List<CatViewModel>
 
@@ -9,6 +14,18 @@
     ViewData["Title"] = "My Cats";
 
     ViewData["Html"] = "<h1 style='color: red;'> Real HTML</h1>";
+}
+
+
+
+@*LINK TO ACTION WITH TAG*@
+
+<a asp-controller="Cats" asp-action="Create">Create Cat</a>
+
+
+
+@section Styles{
+    <link href="~/css/cats.css rel="stylesheet" />
 }
 
 
@@ -36,7 +53,9 @@
 
 @Html.Raw(@ViewData["Html"])
 
-<ul>
+
+
+<ul class="cats">
     @foreach(var cat in Model)
     {
         <li>
@@ -46,3 +65,26 @@
 </ul>
 
 @ViewData["Name"]
+
+@section Scripts {
+    <script>
+    document.getElementsByClassName('cats')[0].innerHTML = '<li>Changed by the power of JS!</li>'
+</script>
+}
+
+
+
+@*PARTIAL VIEW*@
+
+@foreach(var cat in Model)
+{
+    <partial name="_Cat" model="cat"/>
+}
+
+
+
+@*VIEW COMPONENTS*@
+
+@*@await Component.InvokeAsync(typeof(MyViewComponent))*@
+
+<vc:custom-component name="Ivaylo"></vc:custom-component>

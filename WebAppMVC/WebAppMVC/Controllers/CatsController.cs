@@ -9,10 +9,10 @@ namespace WebAppMVC.Controllers
     {
         public IActionResult All()
         {
-            var cats = new List<string>
+            var cats = new List<CatViewModel>
             {
-                "Sharo",
-                "Lady"
+                new CatViewModel {Name = "Sharo", Age = 5 },
+                new CatViewModel {Name = "Lady", Age = 12 }
             };
 
             return View(cats);
@@ -22,15 +22,7 @@ namespace WebAppMVC.Controllers
         public IActionResult Create() => View();
 
         [HttpPost]
-        public IActionResult Create(CatFormModel model)
-        {
-            if (!ModelState.IsValid)
-            {
-                return View(model);
-            }
-
-            return Ok();
-        }
+        public IActionResult Create(CatViewModel model) => Ok(model);
 
     }
 }
