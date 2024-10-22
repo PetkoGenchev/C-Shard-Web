@@ -1,4 +1,6 @@
-﻿namespace Questions_Dropdown.Models
+﻿using static System.Net.Mime.MediaTypeNames;
+
+namespace Questions_Dropdown.Models
 {
     public class QuestionRepository
     {
@@ -16,9 +18,14 @@
                 "that operate on that data within a class.\r\n   2. **Abstraction** – Hiding the complex implementation details and showing only the necessary functionality.\r\n   " +
                 "3. **Inheritance** – A mechanism where a new class can inherit properties and methods from an existing class.\r\n   4. **Polymorphism** – The ability to take many " +
                 "forms, allowing methods to do different things based on the object that is invoking them.\r\n"},
-                new Questions {Id = 4, Text = "What is the difference between an interface and an abstract class?", Answer = "   - **Abstract Class**: Can have implementations for " +
-                "some of its members, and a class can inherit from only one abstract class.\r\n   - **Interface**: Cannot have any implementations, only declarations. A class can " +
-                "implement multiple interfaces. Interfaces are typically used to define a contract for behavior.\r\n"},
+                new Questions {Id = 4, Text = "What is the difference between an interface and an abstract class?", Answer = "•\tImplementation vs. Contract:\r\no\tAbstract Class: Can provide " +
+                "both a contract and some implementation.\r\no\tInterface: Only provides a contract, with no implementation (except default methods starting from C# 8.0).\r\n•\tInheritance:\r\no\t" +
+                "Abstract Class: Supports single inheritance. A class can inherit only one abstract class.\r\no\tInterface: Supports multiple inheritance. A class can implement multiple interfaces.\r\n•\t" +
+                "Member Types:\r\no\tAbstract Class: Can include fields, properties, methods, events, constructors, and static members.\r\no\tInterface: Can only include methods, properties, events, " +
+                "and indexers, without implementations (except static members and default methods in C# 8.0+).\r\n•\tUse Case:\r\no\tAbstract Class: Use when classes share a common base and have a " +
+                "relationship (e.g., all animals can make a sound).\r\no\tInterface: Use when classes are unrelated but need to share a common capability (e.g., both a Dog and Car might implement an " +
+                "IMovable interface).\r\nIn summary, abstract classes are for shared functionality among related classes, while interfaces are for defining capabilities that unrelated classes can " +
+                "implement.\r\n"},
                 new Questions {Id = 5, Text = "What is the `static` keyword in C#?", Answer = "   The `static` keyword in C# is used to declare members that belong to the class itself " +
                 "rather than to any specific object. A static method or property can be accessed without creating an instance of the class. Static members are shared across all instances " +
                 "of the class."},
@@ -42,9 +49,143 @@
                 "modifiers in C# include:\r\n   - **public**: Accessible from any other code.\r\n   - **private**: Accessible only within the containing class.\r\n   - **protected**: Accessible " +
                 "within the containing class and derived classes.\r\n   - **internal**: Accessible within the same assembly.\r\n"},
                 new Questions {Id = 13, Text = "What is the `using` statement in C#?" , Answer = "The `using` statement is used to ensure that resources like file handles, database connections, " +
-                "or streams are properly disposed of once they are no longer needed. It automatically calls the `Dispose` method at the end of the block."}
+                "or streams are properly disposed of once they are no longer needed. It automatically calls the `Dispose` method at the end of the block."},
+                new Questions{Id = 14, Text = "What is a `nullable` type in C#?", Answer = "A nullable type allows value types (like `int`, `bool`, etc.) to represent undefined or missing values. " +
+                "This is achieved by adding a `?` to the type, for example, `int?`. This type can store `null` in addition to the normal range of values."},
+                new Questions{Id = 15, Text = "What are `async` and `await` in C#?", Answer = "   `async` and `await` are used to perform asynchronous programming in C#. The `async` keyword is " +
+                "applied to a method to indicate that it performs an asynchronous operation. The `await` keyword is used inside the `async` method to pause its execution until the awaited task is completed."},
+                new Questions{Id = 16, Text = "What is exception handling in C#?", Answer = "Exception handling in C# is the process of catching and handling runtime errors. It is done using the " +
+                "`try-catch` block. The `try` block contains code that might throw an exception, and the `catch` block handles the exception if one is thrown. The `finally` block can be used to " +
+                "execute code regardless of whether an exception was thrown."},
+                new Questions{Id = 17, Text = "What is a `namespace` in C#?", Answer = "A namespace is a way to organize code in C#. It is used to group related classes, interfaces, and methods. " +
+                "Namespaces help avoid naming conflicts by providing a way to fully qualify names in large projects. For example, `System.Collections` is a namespace that contains collections-related classes."},
+                new Questions{Id = 18, Text = "What is the difference between `Array` and `ArrayList` in C#?", Answer = "Feature/Aspect\tArray\tList\r\nSize/Capacity\tFixed size (cannot be changed after " +
+                "initialization).\tDynamic size (can grow and shrink as needed).\r\nNamespace\tPart of the core language (no namespace needed).\tRequires System.Collections.Generic " +
+                "namespace.\r\nPerformance\tBetter performance for fixed-size collections.\tSlight overhead due to dynamic resizing.\r\nAccess and Operations\tAccess elements using an index, " +
+                "fewer built-in methods.\tAccess using an index, rich set of methods (Add(), Remove(), etc.).\r\nType Safety\tType-safe, all elements must be of the same type.\tType-safe, uses " +
+                "generics to define element types (List<T>).\r\nInitialization\tInitialized with a fixed size or elements.\tInitialized empty, with capacity, or with elements.\r\nResizing\tCannot " +
+                "be resized (must create a new array if needed).\tAutomatically resizes when adding/removing elements.\r\nUse Cases\tBest for collections with a known, fixed size.\tBest for " +
+                "collections where the size can change dynamically.\r\n"},
+                new Questions{Id = 19, Text = "What is the purpose of `Garbage Collection` in C#?", Answer = "Garbage collection in C# is an automatic memory management feature that reclaims " +
+                "memory that is no longer in use by the program. This helps prevent memory leaks by automatically deallocating memory that is no longer reachable."},
+                new Questions{Id = 20, Text = "What are Generics in C#?", Answer = "Generics allow you to define a class or method with a placeholder for the type it operates on. This " +
+                "allows code reuse and type safety without sacrificing performance. For example, `List<T>` is a generic collection that can store any type specified by `T`."},
+                new Questions{Id = 21, Text = "What is the difference between `const` and `readonly` in C#?", Answer = "   - `const`: A compile-time constant. The value is assigned " +
+                "at the time of declaration and cannot be changed. Must be known at compile time.\r\n   - `readonly`: A runtime constant. The value can only be set in the constructor " +
+                "or at the point of declaration, but it can differ between instances of a class.\r\n"},
+                new Questions{Id = 22, Text = "What is the difference between `throw` and `throw ex` in exception handling?", Answer = "   - `throw`: Re-throws the original exception, preserving the stack trace " +
+                "information.\r\n   - `throw ex`: Throws the exception object `ex`, but it resets the stack trace, making it harder to diagnose where the error originally occurred.\r\n"},
+                new Questions {Id = 23, Text = "What is the difference between a `for` loop and a `foreach` loop?",  Answer = "   - `for` loop: Used when you know how many iterations are required or need " +
+                "an index to control the loop.\r\n   - `foreach` loop: Simplifies looping through collections like arrays, lists, or dictionaries, where you don't need an index and just want to iterate over " +
+                "each item.\r\n"},
+                new Questions{Id = 24, Text = "What is method overloading in C#?", Answer = "Method overloading is the ability to define multiple methods with the same name but with different parameter lists " +
+                "(either in type, number, or both). It allows methods to handle different types of input but return the same logical result."},
+                new Questions{Id = 25, Text = "What is the `var` keyword in C#?", Answer = "The `var` keyword is used for implicit typing. It tells the compiler to infer the type of the variable from the type " +
+                "of the expression used to initialize it. Once assigned, the type is static and cannot change."},
+                new Questions{Id = 26, Text = "What is a `property` in C#?", Answer = "A property in C# is a member of a class that provides a flexible mechanism to read, write, or compute the value of a private " +
+                "field. It is defined using `get` and `set` accessors, which can control how values are assigned and retrieved."},
+                new Questions{Id = 27, Text = "What are extension methods in C#?", Answer = "Extension methods allow you to add new methods to existing types without modifying their source code. They are " +
+                "static methods defined in a static class, but they are called as if they were instance methods of the extended type."},
+                new Questions{Id = 28, Text = "What is a `sealed` class in C#?", Answer = "A `sealed` class is a class that cannot be inherited from. When a class is marked as `sealed`, no other class " +
+                "can derive from it, which is often done for security or performance reasons."},
+                new Questions{Id = 29, Text = "What is the difference between `Dispose` and `Finalize` methods in C#?", Answer = "  - `Dispose`: Explicitly releases unmanaged resources. It is part of " +
+                "the `IDisposable` interface and is called manually.\r\n   - `Finalize`: Used to clean up unmanaged resources when the garbage collector destroys an object. It is called by the garbage " +
+                "collector and not recommended for explicit use because it can introduce delays in memory deallocation.\r\n"},
+                new Questions{Id = 30, Text = "What is boxing and unboxing in C#?", Answer = "   - **Boxing**: Converting a value type (like `int`) to a reference type (like `object`), " +
+                "which involves allocating memory on the heap.\r\n   - **Unboxing**: Converting a reference type back to a value type. This can introduce performance overhead and should " +
+                "be minimized when possible.\r\n"},
+                new Questions{Id = 31, Text = "What is the difference between `abstract` and `virtual` methods in C#?", Answer = "- **Virtual method**: A method that can have an implementation in the " +
+                "base class but allows derived classes to override it.\r\n - **Abstract method**: A method that has no implementation in the base class and must be implemented in any derived class.\r\n"},
+                new Questions{Id = 32, Text = "What is a `struct` in C#? How is it different from a `class`?", Answer = " A `struct` is a value type in C#. Unlike classes, structs are " +
+                "stored on the stack, not the heap. Structs are best used for small, lightweight objects that don't require inheritance or complex behaviors."},
+                new Questions{Id = 33, Text = "What is `dependency injection` in C#?", Answer = "Dependency injection (DI) is a design pattern used to implement Inversion of Control (IoC) " +
+                "by providing objects their dependencies, instead of letting the objects create dependencies themselves. It improves modularity and testability."},
+                new Questions{Id = 34, Text = "What is a `delegate` in C# and how does it differ from an `event`?", Answer = "A `delegate` is a type-safe function pointer, allowing you to " +
+                "pass methods as arguments. An `event` is a wrapper around a delegate that adds restrictions, like allowing only the addition and removal of event handlers."},
+                new Questions{Id = 35, Text = "What is the purpose of the `lock` keyword in C#?", Answer = "The `lock` keyword is used to ensure that a block of code runs by only one " +
+                "thread at a time, thus avoiding race conditions when multiple threads access shared resources." },
+                new Questions{Id = 36, Text = "What are `partial` classes in C#?", Answer = " `partial` classes allow a class definition to be split across multiple files. All the " +
+                "parts are combined into one when the program is compiled. This is useful when working with auto-generated code."},
+                new Questions{Id = 37, Text = "What is a `Tuple` in C#?", Answer = "A `Tuple` is a data structure that allows you to store multiple items of different types in a single " +
+                "object. Tuples are often used when you want to return multiple values from a method."},
+                new Questions{Id = 38, Text = "What is `reflection` in C#?", Answer = "Reflection is the process of inspecting metadata about assemblies, types, and their members at " +
+                "runtime. It allows you to dynamically create objects, invoke methods, and access fields and properties." },
+                new Questions{Id = 39, Text = "What is a `lambda expression` in C#?", Answer = "A lambda expression is an anonymous function that can contain expressions and statements. " +
+                "It is used to create delegates or expression tree types more concisely. Example: `(x, y) => x + y`." },
+                new Questions{Id = 40, Text = "What is `boxing` and why can it cause performance issues?", Answer = "Boxing is the process of converting a value type to a reference type, " +
+                "like `int` to `object`. It causes performance issues because it involves allocating memory on the heap and adding an extra step of retrieving the value later."},
+                new Questions{Id = 41, Text = "What is the `async` and `await` pattern in C#?", Answer = "The `async` and `await` keywords are used to write asynchronous code that runs " +
+                "non-blocking operations, like I/O tasks. `await` is used to pause the execution of a method until the awaited task completes." },
+                new Questions{Id = 42, Text = "What are `params` in C#?", Answer = "The `params` keyword allows you to pass a variable number of arguments to a method. " +
+                "This means you can pass zero or more arguments of a specified type to the method."},
+                new Questions{Id = 43, Text = "What is the purpose of `out` and `ref` keywords in C#?", Answer = "   - `ref`: Passes a parameter by reference, meaning changes to the " +
+                "parameter in the method will be reflected outside the method.\r\n   - `out`: Similar to `ref`, but the value does not need to be initialized before it is passed to the " +
+                "method. The method must assign a value before it returns.\r\n"},
+                new Questions{Id = 44, Text = "What is the difference between `String` and `StringBuilder` in C#?", Answer = "- `String`: Immutable, meaning any change creates a new " +
+                "instance, which can be inefficient when performing many operations.\r\n   - `StringBuilder`: Mutable, allowing you to modify the content without creating new objects, " +
+                "which is more efficient when concatenating or modifying strings frequently.\r\n" },
+                new Questions{Id = 45, Text = "What is `null coalescing` operator (`??`) in C#?", Answer = "The `??` operator is used to provide a default value if the left-hand operand " +
+                "is `null`. For example, `x ?? y` returns `x` if `x` is not `null`; otherwise, it returns `y`."},
+                new Questions{Id = 46, Text = "What is `IEnumerable` in C#?", Answer = "   `IEnumerable` is an interface that defines a sequence of objects that can be enumerated. " +
+                "It is used to iterate over collections using `foreach`. `IEnumerable<T>` allows the type to be strongly typed." },
+                new Questions{Id = 47, Text = "What is the difference between `IEnumerable` and `IQueryable`?", Answer = "   - `IEnumerable`: Executes queries in memory and is " +
+                "suitable for in-memory collections like lists.\r\n   - `IQueryable`: Enables querying against a data source, such as a database, and defers execution until the " +
+                "query is enumerated. It's more efficient for large datasets.\r\n" },
+                new Questions{Id = 48, Text = "What is `Garbage Collection` in C# and how does it work?", Answer = "Garbage Collection (GC) is the process of automatically " +
+                "freeing up memory that is no longer being used by the program. The .NET GC works in generations (0, 1, and 2) to improve efficiency, collecting short-lived and " +
+                "long-lived objects separately."},
+                new Questions{Id = 49, Text = "What are `Generics` in C# and why are they useful?", Answer = "Generics allow you to define classes, methods, delegates, or " +
+                "interfaces that operate with any data type, providing type safety without sacrificing performance. They help reduce code duplication by allowing a single " +
+                "class or method to work with different types." },
+                new Questions{Id = 50, Text = "What are `access modifiers` and list their types in C#?", Answer = "Access modifiers define the visibility and accessibility " +
+                "of classes, methods, and other members. The main access modifiers are:\r\n   - **public**: Accessible from anywhere.\r\n   - **private**: Accessible only within " +
+                "the containing class.\r\n   - **protected**: Accessible within the containing class and derived classes.\r\n   - **internal**: Accessible within the same " +
+                "assembly.\r\n   - **protected internal**: Accessible within the same assembly or derived classes.\r\n" },
+                new Questions{Id = 51, Text = "SOLID Principles", Answer = "The SOLID principles are a set of design principles intended to make software designs more " +
+                "understandable, flexible, and maintainable. These principles are particularly important in object-oriented programming, including C#. Let's go over each " +
+                "of them:\r\n1. Single Responsibility Principle (SRP)\r\nDefinition: A class should have only one reason to change, meaning it should have only one " +
+                "responsibility or job.\r\nExplanation: Each class should focus on a single task. If a class has more than one responsibility, changes to one responsibility " +
+                "could impair or affect the other responsibilities. This principle helps in achieving high cohesion in classes.\r\n2. Open/Closed Principle (OCP)\r\nDefinition: " +
+                "Software entities (classes, modules, functions, etc.) should be open for extension but closed for modification.\r\nExplanation: You should be able to add " +
+                "new functionality to a class without altering its existing code. This is typically achieved through inheritance, interfaces, or dependency injection.\r\n3. " +
+                "Liskov Substitution Principle (LSP)\r\nDefinition: Subtypes must be substitutable for their base types without altering the correctness of the " +
+                "program.\r\nExplanation: Objects of a derived class should be able to replace objects of the base class without affecting the correctness of the application. " +
+                "This principle ensures that a subclass can assume the place of its superclass without any unexpected behavior.\r\n4. Interface Segregation Principle " +
+                "(ISP)\r\nDefinition: No client should be forced to depend on methods it does not use.\r\nExplanation: Instead of one large interface, it's better to " +
+                "have multiple smaller, more specific interfaces so that implementing classes only need to be concerned with the methods that are relevant to them.\r\n5. " +
+                "Dependency Inversion Principle (DIP)\r\nDefinition: High-level modules should not depend on low-level modules. Both should depend on abstractions. " +
+                "Abstractions should not depend on details. Details should depend on abstractions.\r\nExplanation: This principle emphasizes that code should depend " +
+                "on interfaces or abstract classes rather than concrete implementations, promoting loose coupling.\r\n" },
+                new Questions{Id = 52, Text = "What is Serialization?", Answer = "Answer - Serialization means saving the state of your object to secondary memory, " +
+                "such as a file.\r\n1.\tBinary serialization (Save your object data into binary format).\r\n2.\tSoap Serialization (Save your object data into binary " +
+                "format; mainly used in network related communication).\r\n3.\tXmlSerialization (Save your object data into an XML file).\r\n" },
+                new Questions{Id = 53, Text = "What is enum?", Answer = "An enum is a value type with a set of related named constants often referred to as an enumerator " +
+                "list. The enum keyword is used to declare an enumeration. It is a primitive data type, which is user defined. An enum is used to create numeric constants " +
+                "in .NET framework. All the members of enum are of enum type. There must be a numeric value for each enum type.\r\nSome points about enum\r\n•\tEnums are " +
+                "enumerated data type in C#.\r\n•\tEnums are strongly typed constant. They are strongly typed, i.e. an enum of one type may not be implicitly assigned to " +
+                "an enum of another type even though the underlying value of their members are the same.\r\n•\tEnumerations (enums) make your code much more readable and " +
+                "understandable.\r\n•\tEnum values are fixed. Enum can be displayed as a string and processed as an integer.\r\n•\tThe default type is int, and the approved " +
+                "types are byte, sbyte, short, ushort, uint, long, and ulong.\r\n•\tEvery enum type automatically derives from System.Enum and thus we can use System.Enum " +
+                "methods on enums.\r\n•\tEnums are value types and are created on the stack and not on the heap.\r\n"},
+                new Questions{Id = 54, Text = "What is CSS?", Answer = "Answer - CSS stands for Cascading Style Sheets. CSS is used to define styles for your web pages, " +
+                "including the design, layout and variations in display for different devices and screen sizes." },
+                new Questions{Id = 55, Text = "What is Stack and Heap?", Answer = "Stack\r\n•\tPurpose: The stack is used for storing value types, method call information " +
+                "(like local variables, method parameters, return addresses), and the execution flow.\r\n•\tAllocation: Memory on the stack is managed automatically. " +
+                "When a function is called, its local variables and parameters are pushed onto the stack. When the function exits, these variables are popped off the " +
+                "stack.\r\n•\tLifetime: Variables on the stack are short-lived. They only exist during the execution of the function or block of code they are defined " +
+                "in.\r\n•\tType of Data:\r\no\tValue types (e.g., int, char, struct) are typically stored directly on the stack.\r\no\tReference types (e.g., objects, " +
+                "arrays, classes) have their reference (or pointer) stored on the stack, but the actual object is stored on the heap.\r\n•\tSize Limitations: The stack " +
+                "is usually smaller in size compared to the heap, and each thread has its own stack.\r\nHeap\r\n•\tPurpose: The heap is used for storing reference type " +
+                "objects and data that needs to be dynamically allocated or has an uncertain lifetime.\r\n•\tAllocation: Memory on the heap is managed by the .NET runtime’s " +
+                "garbage collector. When an object is created using new, it is allocated on the heap.\r\n•\tLifetime: Objects on the heap live until they are no longer " +
+                "referenced and are then cleaned up by the garbage collector.\r\n•\tType of Data:\r\no\tReference types (e.g., instances of classes, arrays) are stored " +
+                "on the heap.\r\no\tEven if a reference type contains value types as fields, the entire object is stored on the heap.\r\n•\tSize and Management: The heap " +
+                "is larger and more flexible than the stack but requires more complex management. The garbage collector periodically frees up memory on the heap that is " +
+                "no longer in use.\r\n"},
+
 
             };
+
 
             var random = new Random();
 
