@@ -1,6 +1,5 @@
 ﻿@model IEnumerable<Questions_Dropdown.Models.Questions>
 
-
 @foreach (var question in Model)
 {
     var collapseId = $"collapse{question.Id}";
@@ -12,7 +11,7 @@
 
         <div class="collapse" id="@collapseId">
             <div class="card card-body">
-                @question.Answer
+                @Html.Raw(question.Answer)
             </div>
         </div>
     </div>
