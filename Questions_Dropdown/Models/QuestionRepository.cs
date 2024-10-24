@@ -173,14 +173,14 @@ namespace Questions_Dropdown.Models
                 new Questions{Id = 55, Topic = ".NET", Question = "What is Stack and Heap?", Answer = "Stack\r\n•\tPurpose: The stack is used for storing value types, method call information " +
                 "(like local variables, method parameters, return addresses), and the execution flow.\r\n•\tAllocation: Memory on the stack is managed automatically. " +
                 "When a function is called, its local variables and parameters are pushed onto the stack. When the function exits, these variables are popped off the " +
-                "stack.\r\n•\tLifetime: Variables on the stack are short-lived. They only exist during the execution of the function or block of code they are defined " +
-                "in.\r\n•\tType of Data:\r\no\tValue types (e.g., int, char, struct) are typically stored directly on the stack.\r\no\tReference types (e.g., objects, " +
-                "arrays, classes) have their reference (or pointer) stored on the stack, but the actual object is stored on the heap.\r\n•\tSize Limitations: The stack " +
-                "is usually smaller in size compared to the heap, and each thread has its own stack.\r\nHeap\r\n•\tPurpose: The heap is used for storing reference type " +
-                "objects and data that needs to be dynamically allocated or has an uncertain lifetime.\r\n•\tAllocation: Memory on the heap is managed by the .NET runtime’s " +
-                "garbage collector. When an object is created using new, it is allocated on the heap.\r\n•\tLifetime: Objects on the heap live until they are no longer " +
-                "referenced and are then cleaned up by the garbage collector.\r\n•\tType of Data:\r\no\tReference types (e.g., instances of classes, arrays) are stored " +
-                "on the heap.\r\no\tEven if a reference type contains value types as fields, the entire object is stored on the heap.\r\n•\tSize and Management: The heap " +
+                "stack.<br />•\tLifetime: Variables on the stack are short-lived. They only exist during the execution of the function or block of code they are defined " +
+                "in.<br />•\tType of Data:<br />o\tValue types (e.g., int, char, struct) are typically stored directly on the stack.<br />o\tReference types (e.g., objects, " +
+                "arrays, classes) have their reference (or pointer) stored on the stack, but the actual object is stored on the heap.<br />•\tSize Limitations: The stack " +
+                "is usually smaller in size compared to the heap, and each thread has its own stack.<br />Heap<br />•\tPurpose: The heap is used for storing reference type " +
+                "objects and data that needs to be dynamically allocated or has an uncertain lifetime.<br />•\tAllocation: Memory on the heap is managed by the .NET runtime’s " +
+                "garbage collector. When an object is created using new, it is allocated on the heap.<br />•\tLifetime: Objects on the heap live until they are no longer " +
+                "referenced and are then cleaned up by the garbage collector.<br />•\tType of Data:<br />o\tReference types (e.g., instances of classes, arrays) are stored " +
+                "on the heap.<br />o\tEven if a reference type contains value types as fields, the entire object is stored on the heap.<br />•\tSize and Management: The heap " +
                 "is larger and more flexible than the stack but requires more complex management. The garbage collector periodically frees up memory on the heap that is " +
                 "no longer in use.\r\n"},
                 new Questions{Id = 55, Topic = "JS", Question = "What is JavaScript?", Answer = "JavaScript is a high-level, interpreted programming language primarily " +
