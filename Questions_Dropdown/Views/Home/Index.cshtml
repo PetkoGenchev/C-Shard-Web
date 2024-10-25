@@ -3,23 +3,31 @@
 
 <div class="row">
 
-    @foreach (var question in Model)
+    <h3 class="margin-top-5px">.NET</h3>
+
+    @foreach (var question in Model.Where(q => q.Topic == ".NET"))
     {
-        var collapseId = $"collapse{question.Id}";
+        <partial name="_Question.Partial", model="question") />
+    }
 
-        <div class="col-md-6 margin-bottom-8px">
-            <button class="btn btn-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#@collapseId" aria-expanded="false" aria-controls="collapseExample">
-                @question.Question
-            </button>
+    <h3 class="margin-top-5px">JS</h3>
 
-            <div class="collapse" id="@collapseId">
-                <div class="card card-body">
-                    @foreach (var line in question.Answer.Split(new[] { "\r\n" }, StringSplitOptions.None))
-                    {
-                        <p>@line</p>
-                    }
-                </div>
-            </div>
-        </div>
+    @foreach (var question in Model.Where(q => q.Topic == "JS"))
+    {
+        <partial name="_Question.Partial" , model="question" ) />
+    }
+
+    <h3 class="margin-top-5px">HTML/CSS</h3>
+
+    @foreach (var question in Model.Where(q => q.Topic == "HTML/CSS"))
+    {
+        <partial name="_Question.Partial" , model="question" ) />
+    }
+
+    <h3 class="margin-top-5px">DB</h3>
+
+    @foreach (var question in Model.Where(q => q.Topic == "DB"))
+    {
+        <partial name="_Question.Partial" , model="question" ) />
     }
 </div>

@@ -274,6 +274,40 @@ namespace Questions_Dropdown.Models
                 "You define rows and columns using grid-template-rows and grid-template-columns." },
                 new Questions{Id = 102, Topic = "HTML/CSS", Question = "What is the difference between em and rem units in CSS?", Answer = "em: Relative to the font size of the nearest " +
                 "parent.\r\nrem: Relative to the root element’s (<html>) font size." },
+                new Questions{Id = 103, Topic = "DB", Question = "What is SQL?", Answer = "SQL (Structured Query Language) is a standardized language used to manage and manipulate relational" +
+                " databases. It allows users to perform operations like retrieving, inserting, updating, and deleting data." },
+                new Questions{Id = 104, Topic = "DB", Question = "What are the different types of SQL commands?", Answer = "DDL (Data Definition Language): Commands like CREATE, ALTER, " +
+                "DROP that define or modify database structures.\r\nDML (Data Manipulation Language): Commands like INSERT, UPDATE, DELETE that manipulate data in tables.\r\nDQL (Data " +
+                "Query Language): Command like SELECT to query data.\r\nDCL (Data Control Language): Commands like GRANT, REVOKE to control access to data." },
+                new Questions{Id = 105, Topic = "DB", Question = "What is a primary key?", Answer = "Answer: A primary key is a column or a set of columns that uniquely identify each row in a table. " +
+                "It enforces the uniqueness constraint, meaning no duplicate values are allowed, and it cannot contain null values." },
+                new Questions{Id = 106, Topic = "DB", Question = "What is a foreign key?", Answer = "A foreign key is a field (or collection of fields) in one table that uniquely identifies " +
+                "a row in another table. It creates a relationship between the two tables, enforcing referential integrity." },
+                new Questions{Id = 107, Topic = "DB", Question = "What is a JOIN in SQL, and what types are there?", Answer = "A JOIN is used to combine rows from two or more tables based " +
+                "on a related column. Types of joins include:\r\nINNER JOIN: Returns records with matching values in both tables.\r\nLEFT JOIN (or LEFT OUTER JOIN): Returns all records " +
+                "from the left table and matched records from the right table.\r\nRIGHT JOIN (or RIGHT OUTER JOIN): Returns all records from the right table and matched records from the " +
+                "left table.\r\nFULL JOIN (or FULL OUTER JOIN): Returns all records when there is a match in either left or right table." },
+                new Questions{Id = 108, Topic = "DB", Question = "What is normalization?", Answer = "Normalization is the process of organizing data in a database to reduce redundancy and improve " +
+                "data integrity. It involves dividing large tables into smaller tables and defining relationships between them to optimize storage and query performance." },
+                new Questions{Id = 109, Topic = "DB", Question = "What are the different normal forms?", Answer = "Common normal forms include:\r\n1NF (First Normal Form): Ensures " +
+                "each column has atomic (indivisible) values.\r\n2NF (Second Normal Form): 1NF and every non-primary attribute is fully functionally dependent on the primary " +
+                "key.\r\n3NF (Third Normal Form): 2NF and no transitive dependency exists between non-primary key attributes." },
+                new Questions{Id = 110, Topic = "DB", Question = "What is the difference between WHERE and HAVING clauses?", Answer = "WHERE is used to filter records before any " +
+                "grouping occurs, while HAVING is used to filter groups after GROUP BY has been applied." },
+                new Questions{Id = 111, Topic = "DB", Question = "How do you use the LIKE operator in SQL?", Answer = "The LIKE operator is used for pattern matching. " +
+                "For example:\r\nSELECT * FROM Customers WHERE Name LIKE 'J%'; (Names starting with \"J\")\r\nSELECT * FROM Customers WHERE Name LIKE '%n'; (Names ending with \"n\")" },
+                new Questions{Id = 112, Topic = "DB", Question = "What is an index in SQL?", Answer = "An index is a database object that improves the speed of data retrieval on a table by " +
+                "creating a data structure that allows fast searching. It works similarly to an index in a book." },
+                new Questions{Id = 113, Topic = "DB", Question = "What is a transaction in SQL?", Answer = "A transaction is a sequence of operations performed as a single logical unit of work. " +
+                "Transactions follow the ACID properties: Atomicity, Consistency, Isolation, and Durability." },
+                new Questions{Id = 114, Topic = "DB", Question = "What is the difference between DELETE, TRUNCATE, and DROP?", Answer = "DELETE: Removes specific rows from a table " +
+                "based on a condition.\r\nTRUNCATE: Removes all rows from a table but keeps the structure for future use.\r\nDROP: Deletes the entire table structure along with its data." },
+                new Questions{Id = 115, Topic = "DB", Question = "What is a stored procedure?", Answer = "A stored procedure is a precompiled collection of SQL statements stored in the database. " +
+                "It can be executed as a single unit, allowing for reuse and improved performance on repetitive tasks." },
+                new Questions{Id = 116, Topic = "DB", Question = "What is a view in SQL?", Answer = "A view is a virtual table that displays data from one or more tables. It allows you " +
+                "to simplify complex queries, secure data access, and is used as an abstraction layer." },
+                new Questions{Id = 117, Topic = "DB", Question = "What is a subquery?", Answer = "A subquery is a query within another query, enclosed within parentheses. " +
+                "It is used to perform operations that need results from another query." },
             };
 
 
