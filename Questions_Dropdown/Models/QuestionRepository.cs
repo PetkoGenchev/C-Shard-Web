@@ -168,7 +168,7 @@ namespace Questions_Dropdown.Models
                 "understandable.\r\n•\tEnum values are fixed. Enum can be displayed as a string and processed as an integer.\r\n•\tThe default type is int, and the approved " +
                 "types are byte, sbyte, short, ushort, uint, long, and ulong.\r\n•\tEvery enum type automatically derives from System.Enum and thus we can use System.Enum " +
                 "methods on enums.\r\n•\tEnums are value types and are created on the stack and not on the heap.\r\n"},
-                new Questions{Id = 54, Topic = ".NET", Question = "What is CSS?", Answer = "Answer - CSS stands for Cascading Style Sheets. CSS is used to define styles for your web pages, " +
+                new Questions{Id = 54, Topic = "HTML/CSS", Question = "What is CSS?", Answer = "Answer - CSS stands for Cascading Style Sheets. CSS is used to define styles for your web pages, " +
                 "including the design, layout and variations in display for different devices and screen sizes." },
                 new Questions{Id = 55, Topic = ".NET", Question = "What is Stack and Heap?", Answer = "Stack\r\n•\tPurpose: The stack is used for storing value types, method call information " +
                 "(like local variables, method parameters, return addresses), and the execution flow.\r\n•\tAllocation: Memory on the stack is managed automatically. " +
@@ -308,6 +308,20 @@ namespace Questions_Dropdown.Models
                 "to simplify complex queries, secure data access, and is used as an abstraction layer." },
                 new Questions{Id = 117, Topic = "DB", Question = "What is a subquery?", Answer = "A subquery is a query within another query, enclosed within parentheses. " +
                 "It is used to perform operations that need results from another query." },
+                new Questions{Id = 118, Topic = ".NET", Question = "Reference and Value types", Answer = "Value Types\r\nDefinition: Value types store the actual data directly. " +
+                "When you assign a value type to a new variable, a copy of the value is made.\r\n\r\nExamples:\r\n\r\nBuilt-in types: int, float, double, " +
+                "char, bool, decimal, etc.\r\nStructs: User-defined types like struct Point { public int X; public int Y; }.\r\nEnumerations: Defined using " +
+                "the enum keyword, like enum Days { Sunday, Monday, Tuesday, ... }.\r\nMemory: Value types are usually stored on the stack, and their size is " +
+                "fixed at compile time. When you create a value type, it directly contains its data.\r\n\r\nBehavior:\r\n\r\nChanging the value of one variable " +
+                "does not affect another variable that was assigned the same value earlier. \r\n Reference Types\r\nDefinition: Reference types store a reference to " +
+                "the actual data (object) in memory. When you assign a reference type to a new variable, you are copying the reference, not the data " +
+                "itself.\r\n\r\nExamples:\r\n\r\nClasses: User-defined types like class Person { public string Name; public int Age; }.\r\nArrays: Like " +
+                "int[] numbers = new int[5];.\r\nStrings: Strings are reference types, even though they behave like value types in some contexts.\r\nInterfaces " +
+                "and delegates.\r\nMemory: Reference types are usually stored on the heap. When you create a reference type, the variable holds a pointer to the " +
+                "memory location of the object.\r\n\r\nBehavior:\r\n\r\nChanges made through one reference will affect all references pointing to the same object. \r\n Choosing " +
+                "Between Value and Reference Types\r\nUse value types when you need lightweight objects that do not require additional overhead of heap allocation and when " +
+                "their behavior as independent entities is desired.\r\nUse reference types when you need to share data between different parts of your program or when you " +
+                "need to represent complex data structures." },
             };
 
 
