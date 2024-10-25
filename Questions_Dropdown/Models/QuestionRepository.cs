@@ -16,7 +16,7 @@ namespace Questions_Dropdown.Models
                 "properties, fields, methods, and events that an object will have. An object is an instance of a class. You can create multiple objects from a class, each having " +
                 "its own values for the properties defined by the class."},
                 new Questions {Id = 3, Topic = ".NET", Question = "What are the four pillars of Object-Oriented Programming (OOP)?", Answer = "1. **Encapsulation** – The bundling of data and methods " +
-                "that operate on that data within a class.\r\n   2. **Abstraction** – Hiding the complex implementation details and showing only the necessary functionality.\r\n   " +
+                "that operate on that data within a class.   2. **Abstraction** – Hiding the complex implementation details and showing only the necessary functionality.\r\n   " +
                 "3. **Inheritance** – A mechanism where a new class can inherit properties and methods from an existing class.\r\n   4. **Polymorphism** – The ability to take many " +
                 "forms, allowing methods to do different things based on the object that is invoking them.\r\n"},
                 new Questions {Id = 4, Topic = ".NET", Question = "What is the difference between an interface and an abstract class?", Answer = "•\tImplementation vs. Contract:\r\no\tAbstract Class: Can provide " +
@@ -173,30 +173,29 @@ namespace Questions_Dropdown.Models
                 new Questions{Id = 55, Topic = ".NET", Question = "What is Stack and Heap?", Answer = "Stack\r\n•\tPurpose: The stack is used for storing value types, method call information " +
                 "(like local variables, method parameters, return addresses), and the execution flow.\r\n•\tAllocation: Memory on the stack is managed automatically. " +
                 "When a function is called, its local variables and parameters are pushed onto the stack. When the function exits, these variables are popped off the " +
-                "stack.<br />•\tLifetime: Variables on the stack are short-lived. They only exist during the execution of the function or block of code they are defined " +
-                "in.<br />•\tType of Data:<br />o\tValue types (e.g., int, char, struct) are typically stored directly on the stack.<br />o\tReference types (e.g., objects, " +
-                "arrays, classes) have their reference (or pointer) stored on the stack, but the actual object is stored on the heap.<br />•\tSize Limitations: The stack " +
-                "is usually smaller in size compared to the heap, and each thread has its own stack.<br />Heap<br />•\tPurpose: The heap is used for storing reference type " +
-                "objects and data that needs to be dynamically allocated or has an uncertain lifetime.<br />•\tAllocation: Memory on the heap is managed by the .NET runtime’s " +
-                "garbage collector. When an object is created using new, it is allocated on the heap.<br />•\tLifetime: Objects on the heap live until they are no longer " +
-                "referenced and are then cleaned up by the garbage collector.<br />•\tType of Data:<br />o\tReference types (e.g., instances of classes, arrays) are stored " +
-                "on the heap.<br />o\tEven if a reference type contains value types as fields, the entire object is stored on the heap.<br />•\tSize and Management: The heap " +
+                "stack.\r\n•\tLifetime: Variables on the stack are short-lived. They only exist during the execution of the function or block of code they are defined " +
+                "in.\r\n•\tType of Data:\r\no\tValue types (e.g., int, char, struct) are typically stored directly on the stack.\r\no\tReference types (e.g., objects, " +
+                "arrays, classes) have their reference (or pointer) stored on the stack, but the actual object is stored on the heap.\r\n•\tSize Limitations: The stack " +
+                "is usually smaller in size compared to the heap, and each thread has its own stack.\r\nHeap\r\n•\tPurpose: The heap is used for storing reference type " +
+                "objects and data that needs to be dynamically allocated or has an uncertain lifetime.\r\n•\tAllocation: Memory on the heap is managed by the .NET runtime’s " +
+                "garbage collector. When an object is created using new, it is allocated on the heap.\r\n•\tLifetime: Objects on the heap live until they are no longer " +
+                "referenced and are then cleaned up by the garbage collector.\r\n•\tType of Data:\r\no\tReference types (e.g., instances of classes, arrays) are stored " +
+                "on the heap.\r\no\tEven if a reference type contains value types as fields, the entire object is stored on the heap.\r\n•\tSize and Management: The heap " +
                 "is larger and more flexible than the stack but requires more complex management. The garbage collector periodically frees up memory on the heap that is " +
                 "no longer in use.\r\n"},
-                new Questions{Id = 55, Topic = "JS", Question = "What is JavaScript?", Answer = "JavaScript is a high-level, interpreted programming language primarily " +
+                new Questions{Id = 59, Topic = "JS", Question = "What is JavaScript?", Answer = "JavaScript is a high-level, interpreted programming language primarily " +
                 "used to create dynamic and interactive content on websites. It is one of the core technologies of the web (along with HTML and CSS) and can run in the " +
                 "browser or on the server (with Node.js)." },
-                new Questions{Id = 55, Topic = "JS", Question = "What are the differences between var, let, and const?", Answer = "var: Function-scoped, can be redeclared and " +
+                new Questions{Id = 67, Topic = "JS", Question = "What are the differences between var, let, and const?", Answer = "var: Function-scoped, can be redeclared and " +
                 "updated.\r\nlet: Block-scoped, can be updated but not redeclared within the same scope.\r\nconst: Block-scoped, cannot be updated or redeclared, requires an initial value."},
                 new Questions{Id = 56, Topic = "JS", Question = "What are the different data types in JavaScript?", Answer = "Answer:\r\nPrimitive types: string, number, boolean, " +
                 "undefined, null, symbol, and bigint.\r\nNon-primitive types: Objects (including arrays, functions, etc.)."},
                 new Questions{Id = 57, Topic = "JS", Question = "What is a function, and how do you define one in JavaScript?", Answer = "A function is a block of code designed " +
                 "to perform a particular task. You can define a function in multiple ways:\r\nFunction declaration: function myFunction() { /* code */ }\r\nFunction expression: " +
                 "const myFunction = function() { /* code */ };\r\nArrow function: const myFunction = () => { /* code */ };"},
-                new Questions{Id = 58, Topic = "JS", Question = "What is hoisting in JavaScript?", Answer = ""},
-                new Questions{Id = 59, Topic = "JS", Question = "", Answer = "Hoisting is JavaScript’s default behavior of moving variable and function declarations to the " +
-                "top of their scope before execution. Only declarations are hoisted, not initializations. For example, var variables are hoisted, but let and const are not " +
-                "initialized until execution."},
+                new Questions{Id = 58, Topic = "JS", Question = "What is hoisting in JavaScript?", Answer = "Hoisting is JavaScript’s default behavior of moving variable and function " +
+                "declarations to the top of their scope before execution. Only declarations are hoisted, not initializations. For example, var variables are hoisted, but let and " +
+                "const are not initialized until execution."},
                 new Questions{Id = 60, Topic = "JS", Question = "What is closure in JavaScript?", Answer = "A closure is a function that retains access to variables " +
                 "from its outer scope even after that outer function has returned."},
                 new Questions{Id = 61, Topic = "JS", Question = "Explain the difference between == and ===.", Answer = "==: Loose equality, compares values after type " +
@@ -210,9 +209,8 @@ namespace Questions_Dropdown.Models
                 "useful for cases where you want to preserve the this value from the parent scope."},
                 new Questions{Id = 65, Topic = "JS", Question = "What is this in JavaScript?", Answer = "this refers to the object from which the function " +
                 "is called. Its value depends on how the function is invoked."},
-                new Questions{Id = 66, Topic = "JS", Question = "What is a callback function?", Answer = ""},
-                new Questions{Id = 67, Topic = "JS", Question = "", Answer = "A callback function is a function passed as an argument to another function, " +
-                "to be executed after some operation completes."},
+                new Questions{Id = 66, Topic = "JS", Question = "What is a callback function?", Answer = "A callback function is a function passed as an argument to " +
+                "another function,to be executed after some operation completes."},
                 new Questions{Id = 68, Topic = "JS", Question = "What is an object in JavaScript?", Answer = "An object is a collection of key-value " +
                 "pairs, where the keys are property names (or methods), and the values are data or functions."},
                 new Questions{Id = 69, Topic = "JS", Question = "What is event delegation?", Answer = "Event delegation is a technique where a " +
@@ -241,17 +239,14 @@ namespace Questions_Dropdown.Models
                 new Questions{Id = 80, Topic = "HTML/CSS", Question = "What is the difference between an absolute and a relative URL in HTML?", Answer = "Absolute URL: A full " +
                 "URL (e.g., https://example.com/about).\r\nRelative URL: A path relative to the current page's location (e.g., about.html)."},
                 new Questions{Id = 81, Topic = "HTML/CSS", Question = "How do you create a link that opens in a new tab in HTML?", Answer = "You use the target=\"_blank\" attribute in an <a> tag:"},
-                new Questions{Id = 82, Topic = "HTML/CSS", Question = "What is the purpose of the <alt> attribute in an <img> tag?", Answer = ""},
-                new Questions{Id = 83, Topic = "HTML/CSS", Question = "", Answer = "The alt attribute provides alternative text for an image if " +
-                "the image fails to load or is inaccessible to screen readers, improving accessibility."},
+                new Questions{Id = 82, Topic = "HTML/CSS", Question = "What is the purpose of the <alt> attribute in an <img> tag?", Answer = "The alt attribute provides " +
+                "alternative text for an image if the image fails to load or is inaccessible to screen readers, improving accessibility."},
                 new Questions{Id = 84, Topic = "HTML/CSS", Question = "What is the difference between <strong> and <b>?", Answer = "<strong> indicates importance " +
                 "or emphasis and has semantic meaning for screen readers.\r\n<b> is used to make text bold without conveying any extra importance."},
-                new Questions{Id = 85, Topic = "HTML/CSS", Question = "What is the difference between <input type=\"submit\"> and <button>?", Answer = ""},
-                new Questions{Id = 86, Topic = "HTML/CSS", Question = "", Answer = "<input type=\"submit\"> is used specifically for form submission.\r\n<button> " +
-                "is a more versatile element that can include text or HTML inside it and can trigger different actions, not just form submission."},
-                new Questions{Id = 87, Topic = "HTML/CSS", Question = "What is CSS?", Answer = ""},
-                new Questions{Id = 88, Topic = "HTML/CSS", Question = "", Answer = "CSS (Cascading Style Sheets) is a language used to describe " +
-                "the presentation of HTML documents, including colors, layouts, fonts, and overall appearance."},
+                new Questions{Id = 85, Topic = "HTML/CSS", Question = "What is the difference between <input type=\"submit\"> and <button>?", Answer = "<input type=\"submit\"> is used " +
+                "specifically for form submission.\r\n<button> is a more versatile element that can include text or HTML inside it and can trigger different actions, not just form submission."},
+                new Questions{Id = 87, Topic = "HTML/CSS", Question = "What is CSS?", Answer = "CSS (Cascading Style Sheets) is a language used to describe the " +
+                "presentation of HTML documents, including colors, layouts, fonts, and overall appearance."},
                 new Questions{Id = 89, Topic = "HTML/CSS", Question = "How do you include CSS in an HTML document?", Answer = "Inline: Using the style attribute on an element. " +
                 "Internal: Using the <style> tag inside the <head>.External: Linking a CSS file."},
                 new Questions{Id = 90, Topic = "HTML/CSS", Question = "What is the CSS box model?", Answer = "he box model describes how an element's size and space are determined. " +

@@ -1,19 +1,25 @@
 ﻿@model IEnumerable<Questions_Dropdown.Models.Questions>
 
 
-@foreach (var question in Model)
-{
-    var collapseId = $"collapse{question.Id}";
+<div class="row">
 
-    <div class="margin-bottom-8px">
-        <button class="btn btn-primary" type="button" data-bs-toggle="collapse" data-bs-target="#@collapseId" aria-expanded="false" aria-controls="collapseExample">
-            @question.Question
-        </button>
+    @foreach (var question in Model)
+    {
+        var collapseId = $"collapse{question.Id}";
 
-        <div class="collapse" id="@collapseId">
-            <div class="card card-body">
-                @question.Answer
+        <div class="col-md-6 margin-bottom-8px">
+            <button class="btn btn-primary w-100" type="button" data-bs-toggle="collapse" data-bs-target="#@collapseId" aria-expanded="false" aria-controls="collapseExample">
+                @question.Question
+            </button>
+
+            <div class="collapse" id="@collapseId">
+                <div class="card card-body">
+                    @foreach (var line in question.Answer.Split(new[] { "\r\n" }, StringSplitOptions.None))
+                    {
+                        <p>@line</p>
+                    }
+                </div>
             </div>
         </div>
-    </div>
-}
+    }
+</div>
