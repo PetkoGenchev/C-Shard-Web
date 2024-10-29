@@ -322,6 +322,34 @@ namespace Questions_Dropdown.Models
                 "Between Value and Reference Types\r\nUse value types when you need lightweight objects that do not require additional overhead of heap allocation and when " +
                 "their behavior as independent entities is desired.\r\nUse reference types when you need to share data between different parts of your program or when you " +
                 "need to represent complex data structures." },
+                new Questions{Id = 119, Topic = ".NET", Question = "What is the .NET Framework?", Answer = "The .NET Framework is a software development platform " +
+                "created by Microsoft. It provides a runtime environment (CLR) and a large class library (Framework Class Library) for building and running applications. " +
+                "The CLR manages the execution of .NET applications and provides features like garbage collection, type safety, and exception handling." },
+                new Questions{Id = 120, Topic = ".NET", Question = "What is the purpose of the Common Language Runtime (CLR)?", Answer = "The CLR is the runtime environment " +
+                "in the .NET Framework that manages the execution of .NET applications. It provides key services, such as memory management (through garbage collection), " +
+                "type safety, exception handling, and security. It also allows multiple .NET languages (like C#, VB.NET, and F#) to interact seamlessly." },
+                new Questions{Id = 121, Topic = ".NET", Question = "What is the Global Assembly Cache (GAC) in .NET Framework?", Answer = "The GAC is a machine-wide cache " +
+                "that stores shared .NET assemblies. Assemblies that need to be shared across multiple applications on the same machine can be installed in the GAC. " +
+                "Assemblies in the GAC are versioned and allow different applications to use the correct version of a shared library without conflicts." },
+                new Questions{Id = 121, Topic = ".NET", Question = "What is Entity Framework, and why is it used?", Answer = "Entity Framework (EF) is an Object-Relational " +
+                "Mapping (ORM) framework for .NET that allows developers to interact with a database using .NET objects instead of SQL queries. It simplifies data " +
+                "access by mapping database tables to C# classes, helping developers avoid manual SQL coding and enabling them to use LINQ for querying data." },
+                new Questions{Id = 122, Topic = ".NET", Question = "What are the main approaches to using Entity Framework?", Answer = "There are three main " +
+                "approaches:\r\n\r\nCode First: The database schema is created based on the C# class models. It’s ideal for developers who prefer defining the " +
+                "database structure in code.\r\nDatabase First: An existing database schema is used to generate C# classes. This approach is useful when working " +
+                "with legacy databases.\r\nModel First: The developer designs a visual model, which generates both the database schema and C# classes. This is less commonly used." },
+                new Questions{Id = 123, Topic = ".NET", Question = "What is DbContext, and what is its purpose?", Answer = "DbContext is the primary class in Entity " +
+                "Framework that acts as a bridge between the application and the database. It manages database connections and provides access to DbSet properties, " +
+                "which represent tables in the database. DbContext is used for querying, saving, and managing data, and it handles tasks such as tracking changes and " +
+                "submitting updates to the database." },
+                new Questions{Id = 124, Topic = ".NET", Question = "What are migrations in Entity Framework, and why are they useful?", Answer = "Migrations are a feature in " +
+                "Entity Framework that track changes made to the data model and apply those changes to the database schema. This allows developers to evolve the database " +
+                "schema in a structured way without manually updating it. With migrations, developers can create, update, and roll back changes, keeping the code and " +
+                "database schema synchronized." },
+                new Questions{Id = 125, Topic = ".NET", Question = "What is lazy loading, and how does it work in Entity Framework?", Answer = "Lazy loading is a feature " +
+                "in Entity Framework that delays the loading of related entities until they are accessed for the first time. When an entity with a navigation property " +
+                "(like a foreign key relationship) is loaded, related data is not retrieved immediately. Instead, Entity Framework loads the related data only when the " +
+                "navigation property is accessed, reducing the initial database load. However, it can lead to multiple queries and performance issues if not managed carefully." },
             };
 
 
